@@ -3,6 +3,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 // import { Tabs } from './src/navigator/Tabs';
 import { SidebarDefinitive } from './src/navigator/SidebarDefinitive';
+import { AuthProvider } from './src/context/AuthContext';
 // import { Sidebar } from './src/navigator/Sidebar';
 // import { StackNavigator } from './src/navigator/StackNavigator';
 
@@ -10,11 +11,21 @@ import { SidebarDefinitive } from './src/navigator/SidebarDefinitive';
 const App = () => {
   return (
     <NavigationContainer>
-      {/* <StackNavigator/> */}
-      {/* <Sidebar/> */}
-      <SidebarDefinitive/>
-      {/* <Tabs/> */}
+      <AppState>
+        {/* <StackNavigator/> */}
+        {/* <Sidebar/> */}
+        <SidebarDefinitive/>
+        {/* <Tabs/> */}
+      </AppState>
     </NavigationContainer>
+  )
+}
+
+const AppState = ({children}:any) => {
+  return(
+    <AuthProvider>
+      {children}
+    </AuthProvider>
   )
 }
 
