@@ -21,7 +21,7 @@ export const StackNavigator = () => {
     // initialRouteName="" points what screen i want to render first
     screenOptions={{
       cardStyle: {
-        // headerShown: false Header off
+        headerShown: false,
         headerStyle: {
           elevation: 0, //Header line off (Android)
           shadowColor: 'transparent' //Header line off (IOS)

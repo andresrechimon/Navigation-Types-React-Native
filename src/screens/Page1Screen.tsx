@@ -3,7 +3,8 @@ import { StackScreenProps } from '@react-navigation/stack';
 import React, {useEffect} from 'react'
 import { View, Text, Button } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { styles } from '../theme/appTheme';
+import { styles, colors } from '../theme/appTheme';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 // interface Props extends StackScreenProps<any, any>{}
 interface Props extends DrawerScreenProps<any, any>{}
@@ -13,10 +14,14 @@ export const Page1Screen = ({navigation}:Props) => {
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
-        <Button
-        title='Menú'
+        <TouchableOpacity
+        style={{
+          marginLeft: 10
+        }}
         onPress={() => navigation.toggleDrawer()}
-        />
+        >
+          <Icon name="menu-outline" size={35} color={colors.primary}/>
+        </TouchableOpacity>
       ) 
     }) 
   }, [])
@@ -46,6 +51,7 @@ export const Page1Screen = ({navigation}:Props) => {
               name: 'Pedro',
             })
           }>
+          <Icon name="body-outline" size={35} color='white'/>
           <Text style={styles.bigButtonText}>Pedro</Text>
         </TouchableOpacity>
 
@@ -57,6 +63,7 @@ export const Page1Screen = ({navigation}:Props) => {
               name: 'María',
             })
           }>
+            <Icon name="body-outline" size={35} color='white'/>
           <Text style={styles.bigButtonText}>María</Text>
         </TouchableOpacity>
       </View>

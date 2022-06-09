@@ -1,9 +1,10 @@
 import React from 'react';
 import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentScrollView } from '@react-navigation/drawer';
 import { SettingsScreen } from '../screens/SettingsScreen';
-import { StackNavigator } from './StackNavigator';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { styles } from '../theme/appTheme';
+import { Tabs } from './Tabs';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 const Drawer = createDrawerNavigator();
@@ -14,7 +15,7 @@ export const SidebarDefinitive = () => {
     <Drawer.Navigator
     drawerContent={(props) => <InternMenu {...props}/>}
     >
-      <Drawer.Screen name="StackNavigator"  component={StackNavigator} />
+      <Drawer.Screen name="Tabs"  component={Tabs} />
       <Drawer.Screen name="SettingsScreen"  component={SettingsScreen} />
     </Drawer.Navigator>
   );
@@ -35,15 +36,19 @@ const InternMenu = ({navigation}:DrawerContentComponentProps) => {
       {/* Menu Options */}
       <View style={styles.menuContainer}>
         <TouchableOpacity
-        onPress={() => navigation.navigate('StackNavigator')} 
-        style={styles.menuButton}>
-          <Text style={styles.menuText}>StackNavigator</Text>
+        onPress={() => navigation.navigate('Tabs')} 
+        style={{...styles.menuButton,
+                flexDirection: 'row'}}>
+          <Icon name='compass-outline' size={23} color='black' style={{marginTop: 2}} />
+          <Text style={styles.menuText}> Navegación</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
         onPress={() => navigation.navigate('SettingsScreen')} 
-        style={styles.menuButton}>
-          <Text style={styles.menuText}>Settings</Text>
+        style={{...styles.menuButton,
+          flexDirection: 'row'}}>
+          <Icon name='settings-outline' size={23} color='black' style={{marginTop: 2}} />
+          <Text style={styles.menuText}> Settings</Text>
         </TouchableOpacity>
       </View>
 
